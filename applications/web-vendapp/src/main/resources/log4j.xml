@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	debug="true">
+	<appender name="appLog" class="org.apache.log4j.DailyRollingFileAppender">
+<!-- 		<param name="File" value="D:/Externos/Cntnt/logs-rest-api/rest-application-outs.log" /> -->
+		<param name="File" value="/home/logs-vendapp/vendapp-application-outs.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="Threshold" value="DEBUG" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd/MM/yyyy HH:mm:ss,SSS} %5p %C method %M:%L - %m%n" />
+		</layout>
+	</appender>
+	<appender name="async" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="256" />
+		<param name="LocationInfo" value="true" />
+		<appender-ref ref="appLog" />
+	</appender>
+	<root>
+		<priority value="debug" />
+		<appender-ref ref="async" />
+	</root>
+</log4j:configuration>
