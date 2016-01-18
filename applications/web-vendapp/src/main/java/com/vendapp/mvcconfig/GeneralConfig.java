@@ -1,5 +1,9 @@
 package com.vendapp.mvcconfig;
 
+/**
+ * Clase de configuraciones generales, por ejemplo de conexion a base de datos.
+ * Estas configuraciones tambien podrian ir en un archivo externo
+ */
 public class GeneralConfig {
 	// Configuraciones para JPA
 	public static final String PROPERTY_NAME_DATABASE_DRIVER = "com.mysql.jdbc.Driver";

@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Entity de la tabla Clientes
+ */
 @Entity
 @Table(name = "clientes")
 public class Cliente {
