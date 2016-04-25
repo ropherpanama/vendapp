@@ -1,5 +1,6 @@
 package com.vendapp.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -13,7 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.collect.Lists;
 import com.vendapp.model.Cliente;
+import com.vendapp.model.Producto;
+import com.vendapp.model.ProductosFactura;
 import com.vendapp.repositories.ClientesRepository;
+import com.vendapp.repositories.ProductosFacturaRepository;
 import com.vendapp.utils.AppUtils;
 
 @RestController
@@ -22,6 +26,9 @@ public class ClientesWS {
 	
 	@Autowired
 	private ClientesRepository service;
+	
+	@Autowired
+	private ProductosFacturaRepository anotherService;
 
 	public ClientesRepository getService() {
 		return service;
@@ -58,6 +65,17 @@ public class ClientesWS {
 		try {
 			logger.info("ID de busqueda recibido -> {}", id); 
 			return service.findOne(id);
+		} catch (Exception e) {
+			logger.error(AppUtils.stackTraceLikeString(e));
+			return null;
+		}
+	}
+	
+	@RequestMapping(value = "/productos", method = RequestMethod.GET, produces = { "application/json" })
+	public ArrayList<ProductosFactura> testProductos() {
+		try {
+			logger.info("PROBANDO SERVICIO DE PRODUCTOS"); 
+			return Lists.newArrayList(anotherService.findAll());
 		} catch (Exception e) {
 			logger.error(AppUtils.stackTraceLikeString(e));
 			return null;
