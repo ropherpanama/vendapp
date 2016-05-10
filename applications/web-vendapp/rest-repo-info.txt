@@ -1,0 +1,89 @@
+El recurso REST de la tabla clientes es el modelo a seguir para implementar los metodos CRUD en las entidades que lo requieran. Ya que las mismas solo poseen
+el metodo "all" (extraer todos los registros de la tabla). A continuación se detalla cada uno de los métodos disponibles, así como sus parametros de entrada.
+
+Clase -> ClienteWS.java
+Ofrece una interface CRUD para la tabla CLIENTES, los metodos disponibles son los siguientes:
+1. Listar todos los registros (all)
+2. Eliminar un registro basado en su ID (delete)
+3. Editar un registro (edit)
+4. Ingresar un nuevo registro (save)
+
+1. Find all:
+	@RequestMapping(value = "/customers/all", method = RequestMethod.GET, produces = { "application/json" })
+	URL de acceso: /customers/all
+	método: GET
+	consume: n/a
+	produce: application/json
+	retorna: json array con todos los registros de la tabla
+	ejemplo: 
+	[  
+	{  
+		"idCliente":1,
+		"nombreCliente":"Algieri Caballero",
+		"direccion":"Las Acacias, Casa 35"
+	},
+	{  
+		"idCliente":2,
+		"nombreCliente":"Rosendo PeÃ±a",
+		"direccion":"Juan Diaz, Llano Bonito"
+	},
+	{  
+		"idCliente":4,
+		"nombreCliente":"Saturnino Rodriguez Eustakio",
+		"direccion":"Chilibre, El popular 20"
+	}
+	]
+	
+2. Find by ID
+	@RequestMapping(value = "/customers/find/{id}", method = RequestMethod.GET, produces = { "application/json" })
+	URL de acceso: /customers/find/{id}
+	método: GET
+	consume: n/a
+	produce: application/json
+	retorna: json con un único registro
+	ejemplo: 
+	{  
+	"idCliente":4,
+	"nombreCliente":"Saturnino Rodriguez Eustakio",
+	"direccion":"Chilibre, El popular 20"
+	}
+	
+3. Delete
+	@RequestMapping(value = "/customers/delete/{id}", method = RequestMethod.GET, produces = { "application/json" })
+	URL de acceso: /customers/delete/{id}
+	método: GET
+	consume: n/a
+	produce: application/json
+	retorna: response con el detalle del resultado de la operación
+	ejemplo: 
+	{  
+	"status":"OK",
+	"msg":"Registro eliminado"
+	}
+	
+4. Save/Edit
+	@RequestMapping(value = "/customers/save", method = RequestMethod.POST, produces = { "application/json" }, consumes = { "application/json" })
+	URL de acceso: /customers/save
+	método: POST
+	consume: application/json
+	produce: application/json
+	ejemplo de entrada para operación ADD (no provee el ID del registro): 
+	{  
+	"nombreCliente":"Rolando Rodriguez Eustakio",
+	"direccion":"Chilibre, El popular 20"
+	}
+	
+	ejemplo de entrada para operación UPDATE (provee el ID del registro): 
+	{  
+	"idCliente":7,
+	"nombreCliente":"Lalo Rodriguez Eustakio",
+	"direccion":"Chilibre, El popular 20"
+	}
+	
+	retorna: response con el detalle del resultado de la operación
+	ejemplo de retorno para ambos casos:
+	{
+		"status": "OK",
+		"msg": "Registro almacenado"
+	}
+	
