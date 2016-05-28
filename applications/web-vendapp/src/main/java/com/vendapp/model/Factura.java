@@ -24,9 +24,6 @@ public class Factura {
 	@Column(name = "id_factura")
 	private Integer idFactura;
 
-	//@OneToMany(mappedBy = "idFactura", fetch = FetchType.EAGER)
-	//private Set<ProductosFactura> productosFacturas;
-
 	@ManyToOne
 	@JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", nullable = false)
 	private Cliente idCliente;
@@ -56,14 +53,6 @@ public class Factura {
 	public void setIdFactura(Integer id) {
 		this.idFactura = id;
 	}
-	
-//	public Set<ProductosFactura> getProductosFacturas() {
-//		return productosFacturas;
-//	}
-//
-//	public void setProductosFacturas(Set<ProductosFactura> productosFacturas) {
-//		this.productosFacturas = productosFacturas;
-//	}
 
 	public Cliente getIdCliente() {
 		return idCliente;

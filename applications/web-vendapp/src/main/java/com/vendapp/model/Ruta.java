@@ -35,5 +35,4 @@ public class Ruta {
     public void setIdRuta(Integer id) {
         this.idRuta = id;
     }
-    
 }

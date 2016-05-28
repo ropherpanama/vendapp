@@ -1,7 +1,7 @@
 package com.vendapp.model;
 
 import java.util.Date;
-import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,11 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -23,17 +23,6 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_pedido")
 	private Integer idPedido;
-
-	public Integer getIdPedido() {
-		return this.idPedido;
-	}
-
-	public void setIdPedido(Integer id) {
-		this.idPedido = id;
-	}
-
-//	@OneToMany(mappedBy = "idPedido")
-//	private Set<DetallePedido> detallePedidoes;
 
 	@ManyToOne
 	@JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", nullable = false)
@@ -60,13 +49,13 @@ public class Pedido {
 	@NotNull
 	private Integer estado;
 
-//	public Set<DetallePedido> getDetallePedidoes() {
-//		return detallePedidoes;
-//	}
-//
-//	public void setDetallePedidoes(Set<DetallePedido> detallePedidoes) {
-//		this.detallePedidoes = detallePedidoes;
-//	}
+	public Integer getIdPedido() {
+		return this.idPedido;
+	}
+
+	public void setIdPedido(Integer id) {
+		this.idPedido = id;
+	}
 
 	public Cliente getIdCliente() {
 		return idCliente;

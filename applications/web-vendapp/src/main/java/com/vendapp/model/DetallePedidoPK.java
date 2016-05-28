@@ -15,17 +15,13 @@ public class DetallePedidoPK implements Serializable {
 	@Column(name = "id_producto", nullable = false)
 	private Integer idProducto;
 
-	@Column(name = "cantidad", nullable = false)
-	private Integer cantidad;
-
 	public DetallePedidoPK() {
 	}
 	
-	public DetallePedidoPK(Integer idPedido, Integer idProducto, Integer cantidad) {
+	public DetallePedidoPK(Integer idPedido, Integer idProducto) {
 		super();
 		this.idPedido = idPedido;
 		this.idProducto = idProducto;
-		this.cantidad = cantidad;
 	}
 
 	public Integer getIdPedido() {
@@ -34,9 +30,5 @@ public class DetallePedidoPK implements Serializable {
 
 	public Integer getIdProducto() {
 		return idProducto;
-	}
-
-	public Integer getCantidad() {
-		return cantidad;
 	}
 }

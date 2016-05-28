@@ -1,5 +1,6 @@
 package com.vendapp.model;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -13,14 +14,9 @@ public class DetallePedido {
 	@EmbeddedId
 	private DetallePedidoPK id;
 
-	public DetallePedidoPK getId() {
-		return this.id;
-	}
-
-	public void setId(DetallePedidoPK id) {
-		this.id = id;
-	}
-
+	@Column(name = "cantidad", nullable = false)
+	private Integer cantidad;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_pedido", referencedColumnName = "id_pedido", insertable = false, updatable = false)
 	private Pedido idPedido;
@@ -28,6 +24,14 @@ public class DetallePedido {
 	@ManyToOne
 	@JoinColumn(name = "id_producto", referencedColumnName = "id_producto", insertable = false, updatable = false)
 	private Producto idProducto;
+
+	public DetallePedidoPK getId() {
+		return this.id;
+	}
+
+	public void setId(DetallePedidoPK id) {
+		this.id = id;
+	}
 
 	public Pedido getIdPedido() {
 		return idPedido;
@@ -45,4 +49,11 @@ public class DetallePedido {
 		this.idProducto = idProducto;
 	}
 
+	public Integer getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
+	}
 }
